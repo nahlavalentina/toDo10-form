@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&family=Roboto+Flex:opsz,wght@8..144,200;8..144,300;8..144,400;8..144,500;8..144,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #4B1165;
+  --secondary: #245E95;
+  --light-violet: #EBBFFF;
+  --light-blue: #CADEF1;
+  --grey: #9F969F;
+  --black: #292429;
+  --white: #FAFAFF;
+
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+
+  background-color: var(--grey);
+}
+
+
+/* font-family: 'Quicksand', sans-serif;
+font-family: 'Roboto Flex', sans-serif; */

@@ -7,8 +7,9 @@ const Header = () => {
     <header className={S.container}>
       <h1>FillForm</h1>
       <nav>
-        <Link>Clientes</Link>
-        <Link>Cadastro</Link>
+        {/* mudar para Link */}
+        <a className={S.link}>Clientes</a>
+        <a className={S.link}>Cadastro</a>
       </nav>
     </header>
   )

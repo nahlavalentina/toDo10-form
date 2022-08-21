@@ -7,7 +7,7 @@ const Header = () => {
     <header className={S.container}>
       <h1>FillForm</h1>
       <nav>
-        {/* mudar para Link */}
+        {/* mudar para Link, precisa ser nav bar lateral*/}
         <a className={S.link}>Clientes</a>
         <a className={S.link}>Cadastro</a>
       </nav>

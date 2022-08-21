@@ -1,38 +1,51 @@
 import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-import Card from '../../components/Card/Card';
 
 const Clients = () => {
-    const [clients, setClients] = useState() 
+    const [client, setClient] = useState([{}]) 
 
     // const instance = axios.create({
     //     baseURL: 'https://randomuser.me/api/'
     // })
 
-    const getClients = async () => {
-        const response = await fetch('https://randomuser.me/api/')
+    async function handleClients() {
+        const response = await fetch('https://randomuser.me/api/');
         const json = await response.json();
         const results = json.results[0];
-        setClients(results)
-        console.log(results);
+        setClient([{
+            name: results.name.first,
+            last: results.name.last,
+            email: results.email,
+            cep: results.location.postcode,
+            address: results.location.street
+        }])
+        
     }
 
     useEffect(() => {
-        getClients()
+        handleClients()
     }, [])
 
   return (
     <div>
-        <section>
-            {/* clients page mapping problem to fix */}
-            {/* {!!clients && clients.map((client) => {
-                return (
-                    <Card name={client.name}
-                    address={client.address}/>
-                );
-            })} */}
-        </section>
-      
+        {/* <div>
+            <article>
+                <small>Nome:</small>
+                <p>{!!client ? client.name : ''} {!!client ? client.last : ''}</p>
+            </article>
+            <article>
+                <small>Email:</small>
+                <p>{!!client ? client.email : ''}</p>
+            </article>
+            <article>
+                <small>CEP:</small>
+                <p>{!!client ? client.cep : ''}</p>
+            </article>
+            <article>
+                <small>Endereço:</small>
+                <p>{!!client ? client.address : ''}</p>
+            </article>
+            <button onClick={handleClients}>Ver Clientes</button>
+        </div>   */}
     </div>
   )
 }

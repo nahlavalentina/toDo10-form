@@ -3,6 +3,8 @@ import {BrowserRouter, Routes as Switch, Route} from "react-router-dom"
 import Header from './components/Header/Header'
 import Clients from './pages/Clients/Clients'
 import FormOne from './pages/FormOne/FormOne'
+import FormThree from './pages/FormThree/FormThree'
+import FormTwo from './pages/FormTwo/FormTwo'
 
 const Routes = () => {
   return (
@@ -10,6 +12,8 @@ const Routes = () => {
     <Header />
     <Switch>
     <Route path='/' element={<FormOne />}/>
+    <Route path='/dados-2' element={<FormTwo />}/>
+    <Route path='/dados-finalizar' element={<FormThree />}/>
     <Route path='/clientes' element={<Clients />}/>
     </Switch>
     {/* adicionar, switch e route de cada page, footer */}

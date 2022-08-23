@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Fieldset from "../../components/Fieldset/Fieldset";
+import S from './FormOne.module.css'
 
 const FormOne = () => {
   const [values, setValues] = useState({
@@ -89,8 +90,8 @@ function validate() {
   }
 
   return (
-    <div>
-      <div>
+    <div className={S.container}>
+      <div className={S.fieldContainer}>
         <Fieldset
           title="Nome:"
           type="text"
@@ -101,7 +102,7 @@ function validate() {
         />
          {errors.type === "error" && <p>{errors.message}</p>}
       </div>
-      <div>
+      <div className={S.fieldContainer}>
         <Fieldset
           title="Sobrenome:"
           type="text"
@@ -112,7 +113,7 @@ function validate() {
         />
          {errors.type === "error" && <p>{errors.message}</p>}
       </div>
-      <div>
+      <div className={S.fieldContainer}>
         <Fieldset
           title="Email:"
           type="text"
@@ -123,7 +124,7 @@ function validate() {
         />
          {errors.type === "error" && <p>{errors.message}</p>}
       </div>
-      <div>
+      <div className={S.fieldContainer}>
         <Fieldset
           title="Telefone:"
           type="number"

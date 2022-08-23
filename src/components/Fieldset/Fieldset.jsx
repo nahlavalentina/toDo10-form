@@ -1,12 +1,20 @@
-import React from 'react'
+import React from "react";
+import S from './Fieldset.module.css'
 
 const Fieldset = (props) => {
   return (
-    <fieldset>
+    <fieldset className={S.container}>
       <label>{props.title}</label>
-      <input type={props.type} onChange={props.onchange} name={props.name} placeholder={props.placeholder} value={props.value}/>
+      <input
+      className={S.formInput}
+        type={props.type}
+        onChange={props.onchange}
+        name={props.name}
+        placeholder={props.placeholder}
+        value={props.value}
+      />
     </fieldset>
-  )
-}
+  );
+};
 
-export default Fieldset
+export default Fieldset;

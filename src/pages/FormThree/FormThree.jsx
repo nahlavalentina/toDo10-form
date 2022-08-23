@@ -5,6 +5,8 @@ import Button from '../../components/Button/Button';
 import S from './FormThree.module.css'
 
 const FormThree = () => {
+    // segue mesma lógica das outras páginas de formulário
+    
     const [values, setValues] = useState({
         dob: "",
         cpf: "",

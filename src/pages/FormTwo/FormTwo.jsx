@@ -5,6 +5,8 @@ import Button from "../../components/Button/Button";
 import S from './FormTwo.module.css'
 
 const FormTwo = () => {
+
+    //segue a mesma lógica da primeira pagina de formulário
     const [values, setValues] = useState({
         cep: "",
         address: "",

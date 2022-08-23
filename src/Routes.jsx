@@ -7,6 +7,8 @@ import FormThree from './pages/FormThree/FormThree'
 import FormTwo from './pages/FormTwo/FormTwo'
 import Success from './pages/Success/Success'
 
+// importa o componente principal header para mantê-lo fixado na página e, dentro de switch, tem todas as rotas das páginas para fazer o building funcionar, criando as conexões necessárias e validando as páginas.
+
 const Routes = () => {
   return (
     <BrowserRouter>

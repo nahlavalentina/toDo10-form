@@ -5,6 +5,9 @@ import Fieldset from "../../components/Fieldset/Fieldset";
 import S from './FormOne.module.css'
 
 const FormOne = () => {
+
+//cria estado inicial de valores de input a serem alterados
+
   const [values, setValues] = useState({
     firstname: "",
     lastname: "",
@@ -13,10 +16,14 @@ const FormOne = () => {
   });
   const navigate = useNavigate()
 
+//cria estado inicial de erro
+
   const [errors, setErrors] = useState({
     type: "",
     message: ""
   });
+
+//observa alterações e com o spread, coloca os valores em seus lugares específicos
 
   const handleChange = (target, key) => {
     const value = target.value;
@@ -27,6 +34,8 @@ const FormOne = () => {
     console.log(values);
     validate(setErrors({type: "success", message: ""}))
   };
+
+//função assíncrona que confere a validação e em caso de sucesso, manda para a próxima etapa
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,6 +55,7 @@ const FormOne = () => {
     navigate("/dados-2")
   }
 
+  //função que faz cada uma das validaçoes necessárias e mostra na tela o erro quando houver.
 
 function validate() {
     if (!values.firstname.trim()) {
@@ -89,6 +99,8 @@ function validate() {
     return true;
   }
 
+  //retorno trazendo componente fieldset, recebendo value e continuando a observação de alterações
+
   return (
     <div className={S.container}>
       <div className={S.fieldContainer}>
@@ -100,6 +112,8 @@ function validate() {
           value={values.firstname}
           onchange={({ target }) => handleChange(target, "firstname")}
         />
+
+        {/* em caso de erro, a mensagem aparece na tela */}
          {errors.type === "error" && <p>{errors.message}</p>}
       </div>
       <div className={S.fieldContainer}>

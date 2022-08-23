@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import S from './Clients.module.css'
 
 const Clients = () => {
+    // useState para acompanhar transformações da página e setar estado inicial de objeto
+
     const [client, setClient] = useState({
         name: '',
         last: '',
@@ -13,6 +15,8 @@ const Clients = () => {
     // const instance = axios.create({
     //     baseURL: 'https://randomuser.me/api/'
     // })
+
+    // função para pegar dados da API ramdom user e alterar estados passados anteriormente
 
     async function handleClients() {
         const response = await fetch('https://randomuser.me/api/');
@@ -29,10 +33,14 @@ const Clients = () => {
         
     }
 
+    // carrega requisição da api no carregamento da página, apenas uma vez
+
     useEffect(() => {
         handleClients()
         console.log(client);
     }, [])
+
+    //retornos com ternários individuis de cada item a ser puxado e apresentad
 
   return (
     <div className={S.container}>

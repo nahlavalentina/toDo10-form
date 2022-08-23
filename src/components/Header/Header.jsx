@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
 
+    //componente fixo do site, em todas as páginas
+
     const navigate = useNavigate()
 
     function handleClientClick() {
@@ -18,7 +20,7 @@ const Header = () => {
     <header className={S.container}>
       <h1>FillForm</h1>
       <nav>
-        {/* mudar para Link, precisa ser nav bar lateral*/}
+        {/* como utiliza o navigate, não precisa da tag link importada do react router dom*/}
         <a className={S.link} onClick={handleClientClick}>Clientes</a>
         <a className={S.link} onClick={handleFormClick}>Cadastro</a>
       </nav>

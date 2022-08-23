@@ -23,6 +23,7 @@ const FormThree = () => {
           [key]: value
         });
         console.log(values);
+        validate(setErrors({type: "success", message: ""}))
       };
     
       const handleSubmit = async (e) => {
@@ -38,8 +39,6 @@ const FormThree = () => {
     
        console.log(values)
        console.log(errors)
-    
-       alert("Uhum")
     
         navigate("/sucesso")
       }

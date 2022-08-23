@@ -23,6 +23,7 @@ const FormTwo = () => {
           [key]: value
         });
         console.log(values);
+        validate(setErrors({type: "success", message: ""}))
       };
     
       const handleSubmit = async (e) => {
@@ -38,8 +39,6 @@ const FormTwo = () => {
     
        console.log(values)
        console.log(errors)
-    
-       alert("Uhum")
     
         navigate("/dados-finalizar")
       }

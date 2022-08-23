@@ -52,6 +52,8 @@ const FormOne = () => {
    console.log(values)
    console.log(errors)
 
+   //leva para proxima pagina de form caso tenha sucesso na validação
+
     navigate("/dados-2")
   }
 

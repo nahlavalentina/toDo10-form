@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Fieldset from "../../components/Fieldset/Fieldset";
 import Button from "../../components/Button/Button";
+import S from './FormTwo.module.css'
 
 const FormTwo = () => {
     const [values, setValues] = useState({
@@ -75,8 +76,8 @@ const FormTwo = () => {
       }
     
       return (
-        <div>
-          <div>
+        <div className={S.container}>
+          <div className={S.fieldContainer}>
             <Fieldset
               title="CEP:"
               type="number"
@@ -87,7 +88,7 @@ const FormTwo = () => {
             />
              {errors.type === "error" && <p>{errors.message}</p>}
           </div>
-          <div>
+          <div className={S.fieldContainer}>
             <Fieldset
               title="Endereço:"
               type="text"
@@ -98,7 +99,7 @@ const FormTwo = () => {
             />
              {errors.type === "error" && <p>{errors.message}</p>}
           </div>
-          <div>
+          <div className={S.fieldContainer}>
             <Fieldset
               title="Complemento:"
               type="text"

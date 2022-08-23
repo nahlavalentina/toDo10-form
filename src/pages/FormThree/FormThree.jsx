@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Fieldset from '../../components/Fieldset/Fieldset';
 import Button from '../../components/Button/Button';
+import S from './FormThree.module.css'
 
 const FormThree = () => {
     const [values, setValues] = useState({
@@ -75,8 +76,8 @@ const FormThree = () => {
       }
     
       return (
-        <div>
-          <div>
+        <div className={S.container}>
+          <div className={S.fieldContainer}>
             <Fieldset
               title="Data de Nascimento:"
               type="date"
@@ -86,7 +87,7 @@ const FormThree = () => {
             />
              {errors.type === "error" && <p>{errors.message}</p>}
           </div>
-          <div>
+          <div className={S.fieldContainer}>
             <Fieldset
               title="CPF:"
               type="number"
@@ -97,7 +98,7 @@ const FormThree = () => {
             />
              {errors.type === "error" && <p>{errors.message}</p>}
           </div>
-          <div>
+          <div className={S.fieldContainer}>
             <Fieldset
               title="Renda Mensal:"
               type="number"

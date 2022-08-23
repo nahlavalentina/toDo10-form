@@ -28,4 +28,6 @@
     height: 30px;
     width: 100%;
     border: none;
+    background-color: var(--grey);
+    color: var(--white);
   }

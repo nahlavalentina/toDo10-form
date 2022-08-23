@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import S from './Clients.module.css'
 
 const Clients = () => {
     const [client, setClient] = useState({
@@ -34,7 +35,7 @@ const Clients = () => {
     }, [])
 
   return (
-    <div>
+    <div className={S.container}>
      <div>
     <article>
         <small>Nome:</small>

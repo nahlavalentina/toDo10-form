@@ -79,7 +79,7 @@ function validate() {
             type: "error",
             message: "Necessário preencher telefone!"
         })
-    } else if (values.phone.length < 11) {
+    } else if (values.phone.length < 10) {
         return setErrors({
             type: "error",
             message: "Telefone inválido!"

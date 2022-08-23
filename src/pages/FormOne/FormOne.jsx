@@ -12,51 +12,81 @@ const FormOne = () => {
   });
   const navigate = useNavigate()
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    type: "",
+    message: ""
+  });
 
   const handleChange = (target, key) => {
     const value = target.value;
     setValues({
       ...values,
-      [key]: value,
+      [key]: value
     });
-    console.log(setValues(values));
+    console.log(values);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setErrors(validate(values))
+   if (!validate()) return
 
-    if (Object.keys(errors).length === 0) {
-        navigate("/dados-2")
-    }
+   setValues({
+    firstname: values.firstname,
+    lastname: values.lastname,
+    email: values.email,
+    phone: values.phone
+   })
+
+   console.log(values)
+   console.log(errors)
+
+   alert("Uhum")
+
+    navigate("/dados-2")
   }
 
 
-  async function validate() {
+function validate() {
     if (!values.firstname.trim()) {
-      errors.firstmame = "Nome obrigatório";
-      console.log(errors.firstname)
+        return setErrors({
+            type: "error",
+            message: "Necessário preencher nome!"
+        })
     }
 
     if (!values.lastname.trim()) {
-      errors.lastmame = "Sobrenome obrigatório";
+        return setErrors({
+            type: "error",
+            message: "Necessário preencher sobrenome!"
+        })
     }
 
     if (!values.email) {
-      errors.email = "Email obrigatório";
+        return setErrors({
+            type: "error",
+            message: "Necessário preencher email!"
+        })
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-      errors.email = "Email inválido";
+        return setErrors({
+            type: "error",
+            message: "Email inválido!"
+        })
     }
 
     if (!values.phone) {
-      errors.phone = "Telefone obrigatório";
+        return setErrors({
+            type: "error",
+            message: "Necessário preencher telefone!"
+        })
     } else if (values.phone.length < 11) {
-      errors.phone = "Telefone inválido";
+        return setErrors({
+            type: "error",
+            message: "Telefone inválido!"
+        })
     }
 
-    return errors;
+    return true;
   }
 
   return (
@@ -68,9 +98,9 @@ const FormOne = () => {
           name="firstname"
           placeholder="Escreva seu nome"
           value={values.firstname}
-          onChange={({ target }) => handleChange(target, "firstname")}
+          onchange={({ target }) => handleChange(target, "firstname")}
         />
-         {!!errors.firstname && <p>{errors.firstname}</p>}
+         {errors.type === "error" && <p>{errors.message}</p>}
       </div>
       <div>
         <Fieldset
@@ -79,9 +109,9 @@ const FormOne = () => {
           name="lastname"
           placeholder="Escreva seu sobrenome"
           value={values.lastname}
-          onChange={({ target }) => handleChange(target, "lastname")}
+          onchange={({ target }) => handleChange(target, "lastname")}
         />
-         {!!errors.lastname && <p>{errors.lastname}</p>}
+         {errors.type === "error" && <p>{errors.message}</p>}
       </div>
       <div>
         <Fieldset
@@ -90,9 +120,9 @@ const FormOne = () => {
           name="email"
           placeholder="Escreva seu email"
           value={values.email}
-          onChange={({ target }) => handleChange(target, "email")}
+          onchange={({ target }) => handleChange(target, "email")}
         />
-         {!!errors.email && <p>{errors.email}</p>}
+         {errors.type === "error" && <p>{errors.message}</p>}
       </div>
       <div>
         <Fieldset
@@ -101,11 +131,11 @@ const FormOne = () => {
           name="phone"
           placeholder="Escreva seu telefone"
           value={values.phone}
-          onChange={({ target }) => handleChange(target, "phone")}
+          onchange={({ target }) => handleChange(target, "phone")}
         />
-         {!!errors.phone && <p>{errors.phone}</p>}
+         {errors.type === "error" && <p>{errors.message}</p>}
       </div>
-      <Button text="Próximo" onClick={handleSubmit} />
+      <Button text="Próximo" onclick={handleSubmit} />
     </div>
   );
 };

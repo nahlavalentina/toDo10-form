@@ -17,6 +17,21 @@ const FormOne = () => {
     message: ""
   });
 
+  const [errors2, setErrors2] = useState({
+    type: "",
+    message: ""
+  });
+
+  const [errors3, setErrors3] = useState({
+    type: "",
+    message: ""
+  });
+
+  const [errors4, setErrors4] = useState({
+    type: "",
+    message: ""
+  });
+
   const handleChange = (target, key) => {
     const value = target.value;
     setValues({
@@ -24,6 +39,7 @@ const FormOne = () => {
       [key]: value
     });
     console.log(values);
+    validate()
   };
 
   const handleSubmit = async (e) => {
@@ -48,45 +64,54 @@ const FormOne = () => {
 
 
 function validate() {
+    
     if (!values.firstname.trim()) {
         return setErrors({
             type: "error",
             message: "Necessário preencher nome!"
         })
-    }
-
-    if (!values.lastname.trim()) {
-        return setErrors({
+    } else if (!values.lastname.trim()) {
+        return setErrors2({
             type: "error",
             message: "Necessário preencher sobrenome!"
         })
-    }
-
-    if (!values.email) {
-        return setErrors({
+    } else if (!values.email) {
+        return setErrors3({
             type: "error",
             message: "Necessário preencher email!"
         })
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-        return setErrors({
+        return setErrors3({
             type: "error",
             message: "Email inválido!"
         })
-    }
-
-    if (!values.phone) {
-        return setErrors({
+    } else if (!values.phone) {
+        return setErrors4({
             type: "error",
             message: "Necessário preencher telefone!"
         })
     } else if (values.phone.length < 11) {
-        return setErrors({
+        return setErrors4({
             type: "error",
             message: "Telefone inválido!"
         })
+    } else {
+        return setErrors({
+            type: "success",
+            message: ""
+        }),
+        setErrors2({
+            type: "success",
+            message: ""
+        }), setErrors3({
+            type: "success",
+            message: ""
+        }), setErrors4({
+            type: "success",
+            message: ""
+        })
     }
 
-    return true;
   }
 
   return (
@@ -100,7 +125,7 @@ function validate() {
           value={values.firstname}
           onchange={({ target }) => handleChange(target, "firstname")}
         />
-         {errors.type === "error" && <p>{errors.message}</p>}
+         {errors.type === "error" ? <p>{errors.message}</p> : ""}
       </div>
       <div>
         <Fieldset
@@ -111,7 +136,7 @@ function validate() {
           value={values.lastname}
           onchange={({ target }) => handleChange(target, "lastname")}
         />
-         {errors.type === "error" && <p>{errors.message}</p>}
+         {errors2.type === "error" ? <p>{errors2.message}</p> : ""}
       </div>
       <div>
         <Fieldset
@@ -122,7 +147,7 @@ function validate() {
           value={values.email}
           onchange={({ target }) => handleChange(target, "email")}
         />
-         {errors.type === "error" && <p>{errors.message}</p>}
+         {errors3.type === "error" ? <p>{errors3.message}</p> : ""}
       </div>
       <div>
         <Fieldset
@@ -133,7 +158,7 @@ function validate() {
           value={values.phone}
           onchange={({ target }) => handleChange(target, "phone")}
         />
-         {errors.type === "error" && <p>{errors.message}</p>}
+         {errors4.type === "error" ? <p>{errors4.message}</p> : ""}
       </div>
       <Button text="Próximo" onclick={handleSubmit} />
     </div>

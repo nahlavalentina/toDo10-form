@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 const Clients = () => {
-    const [client, setClient] = useState([{
+    const [client, setClient] = useState({
         name: '',
         last: '',
         email: '',
         cep: '',
         address: ''
-    }]) 
+    }) 
 
     // const instance = axios.create({
     //     baseURL: 'https://randomuser.me/api/'
@@ -18,7 +18,7 @@ const Clients = () => {
         const json = await response.json();
         const results = json.results[0]
         setClient([{
-            name: results.name.first,
+            nome: results.name.first,
             last: results.name.last,
             email: results.email,
             cep: results.location.postcode,
@@ -38,7 +38,7 @@ const Clients = () => {
      <div>
     <article>
         <small>Nome:</small>
-        <p>{!!client && client.name} {!!client && client.last}</p>
+        <p>{!!client && client.nome} {!!client && client.last}</p>
     </article>
     <article>
         <small>Email:</small>
